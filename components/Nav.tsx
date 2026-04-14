@@ -43,9 +43,9 @@ export default function Nav() {
             key={href}
             href={href}
             onClick={() => track("nav_click", { section: label, device: "desktop" })}
-            className="text-[11px] md:text-xs uppercase tracking-[0.12em] font-medium text-fg/70 hover:text-[#FFE033] transition-colors"
+            className="inline-block text-[11px] md:text-xs uppercase tracking-[0.12em] font-medium text-fg/70 hover:text-[#FFE033] hover:scale-110 transition-all duration-200 origin-left"
           >
-            {label}
+            {label} <span className="text-[10px]">↗</span>
           </Link>
         ))}
       </nav>

@@ -6,7 +6,7 @@ const projects: { title: string; description: string; tags: string[]; href: stri
 
 export default function WorkPage() {
   return (
-    <PageShell title="Work" subtitle="Projects, side experiments, and things I've shipped.">
+    <PageShell title="Projects" subtitle="Projects, side experiments, and things I've shipped.">
       {projects.length === 0 ? (
         <p className="text-muted font-light italic text-sm mb-16">Coming soon.</p>
       ) : (

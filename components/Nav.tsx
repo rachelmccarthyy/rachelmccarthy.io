@@ -41,19 +41,12 @@ export default function Nav() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 flex items-start justify-between px-5 md:px-10 py-5 md:py-6">
-        <Link
-          href="/"
-          className="inline-block text-base md:text-lg italic text-[#FFE033] no-underline font-[family-name:var(--font-display)] font-semibold tracking-[-0.02em] hover:text-white hover:scale-110 transition-all duration-200 origin-left"
-        >
-          Rachel McCarthy
-        </Link>
-
+      <nav className="fixed top-0 left-0 right-0 z-50 flex items-start justify-start px-5 md:px-10 py-5 md:py-6">
         {/* Desktop nav */}
-        <ul className="hidden md:flex md:flex-col md:items-end md:gap-2 text-sm font-medium text-[#FFE033] tracking-[-0.01em]">
+        <ul className="hidden md:flex md:flex-col md:items-start md:gap-2 text-sm font-medium text-[#FFE033] tracking-[-0.01em]" style={{ textShadow: "0 1px 4px rgba(0,0,0,0.5)" }}>
           {links.map(({ href, label }) => (
             <li key={href}>
-              <Link href={href} className="inline-block hover:text-white hover:scale-110 transition-all duration-200 origin-right">
+              <Link href={href} className="inline-block hover:text-white hover:scale-110 transition-all duration-200 origin-left">
                 {label} <span className="text-xs">↗</span>
               </Link>
             </li>

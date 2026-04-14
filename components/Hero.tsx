@@ -32,19 +32,15 @@ export default function Hero() {
 
         <h1
           className="leading-[0.88] tracking-tight transition-all duration-100"
-          style={{ fontSize: "clamp(56px, 14vw, 172px)", fontFamily: fonts[fontIndex], fontWeight: 800 }}
+          style={{ fontSize: "clamp(56px, 14vw, 172px)", fontFamily: fonts[fontIndex], fontWeight: 800, textShadow: "0 1px 3px rgba(0,0,0,0.35)" }}
         >
           <span className="block" style={{ color: "#FFE033" }}>Rachel</span>
           <span className="block" style={{ color: "#FFE033" }}>McCarthy</span>
         </h1>
 
 
-        <p className="mt-18 text-sm font-medium leading-snug tracking-[0.02em] text-[#FFE033]">
-          human first product manager.
-        </p>
-
-        <p className="mt-4 text-base md:text-lg italic font-semibold tracking-[-0.02em]" style={{ color: "#FFE033" }}>
-          Brooklyn, NY | {new Date().toLocaleDateString("en-US", { month: "long", year: "numeric" })}
+        <p className="mt-18 italic font-semibold tracking-[-0.02em] whitespace-nowrap" style={{ color: "#FFE033", fontSize: "clamp(11px, 1.8vw, 22px)", textShadow: "0 1px 3px rgba(0,0,0,0.4)" }}>
+          Product Manager | Brooklyn, NY | {new Date().toLocaleDateString("en-US", { month: "long", year: "numeric" })}
         </p>
 
       </div>

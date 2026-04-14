@@ -217,7 +217,7 @@ export default function Home() {
           {/* Col 1: text */}
           <div className="text-sm text-fg leading-normal font-normal text-justify space-y-4">
             <p>
-              I&apos;m Rachel — a product manager living in Brooklyn. I build things people actually get to see, touch, and use every day, and I think that&apos;s one of the most human things you can do with a career.
+              <span className="font-semibold">I&apos;m Rachel — a product manager living in Brooklyn.</span> I build things people actually get to see, touch, and use every day, and I think that&apos;s one of the most human things you can do with a career.
             </p>
             <p>
               I studied economics and spent years training in classical ballet and competitive dance — which sounds like a strange combination until you realize both are just different ways of understanding systems, people, and what makes something work. That&apos;s the lens I bring to product: analytically grounded, visually inclined, and genuinely interested in the human on the other end. I&apos;ve shipped marketplaces, explored AI-powered tools, and spent more hours in Figma than I&apos;d like to admit. The throughline is always the same — technology that actually serves people, not the other way around.

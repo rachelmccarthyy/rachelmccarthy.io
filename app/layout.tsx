@@ -16,6 +16,7 @@ import {
   Space_Grotesk,
   Geist_Mono,
 } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import Nav from "@/components/Nav";
 import "./globals.css";
 
@@ -46,6 +47,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className={`${inter.variable} ${montserrat.variable} ${raleway.variable} ${syne.variable} ${figtree.variable} ${outfit.variable} ${barlow.variable} ${bebasNeue.variable} ${oswald.variable} ${anton.variable} ${dmSans.variable} ${hankenGrotesk.variable} ${plusJakarta.variable} ${spaceGrotesk.variable} ${geistMono.variable}`}>
         <Nav />
         {children}
+        <Analytics />
       </body>
     </html>
   );

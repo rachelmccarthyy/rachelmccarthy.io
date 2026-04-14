@@ -1,18 +1,27 @@
 export default function PageShell({
   title,
   subtitle,
+  id,
   children,
 }: {
   title: string;
   subtitle?: string;
+  id?: string;
   children: React.ReactNode;
 }) {
   return (
-    <main className="mx-auto max-w-3xl px-8 pt-32 pb-24">
-      <div className="mb-10">
-        <h1 className="text-4xl font-medium text-[#1a1a1a]">{title}</h1>
-        {subtitle && <p className="mt-2 text-gray-400 text-base font-light">{subtitle}</p>}
-        <div className="mt-4 h-1 w-12 rounded-full bg-primary" />
+    <main id={id} className="px-10 pt-36 pb-28 scroll-mt-20">
+      <div className="mb-14">
+        <h1
+          className="font-[family-name:var(--font-bebas)] leading-none tracking-wide"
+          style={{ fontSize: "clamp(52px, 6vw, 80px)", color: "#FFE033" }}
+        >
+          {title}
+        </h1>
+        {subtitle && (
+          <p className="mt-3 text-[12px] uppercase tracking-[0.25em] text-fg/50 font-medium">{subtitle}</p>
+        )}
+        <div className="mt-8 h-px w-full bg-border" />
       </div>
       {children}
     </main>

@@ -8,15 +8,15 @@ export default function BooksPage() {
   return (
     <PageShell title="Books" subtitle="Things I've read and loved.">
       {books.length === 0 ? (
-        <p className="text-gray-300 font-light italic">Coming soon.</p>
+        <p className="text-muted font-light italic text-sm">Coming soon.</p>
       ) : (
         <ul className="space-y-6">
           {books.map((book) => (
-            <li key={book.title} className="border-b border-gray-100 pb-6">
-              <p className="font-medium text-[#1a1a1a]">{book.title}</p>
-              <p className="text-sm text-gray-400 font-light mt-0.5">{book.author}</p>
+            <li key={book.title} className="border-b border-border pb-6">
+              <p className="font-medium text-fg">{book.title}</p>
+              <p className="text-xs uppercase tracking-widest text-muted mt-1">{book.author}</p>
               {book.note && (
-                <p className="mt-2 text-sm text-gray-500 font-light">{book.note}</p>
+                <p className="mt-2 text-sm text-fg/50 font-light">{book.note}</p>
               )}
             </li>
           ))}

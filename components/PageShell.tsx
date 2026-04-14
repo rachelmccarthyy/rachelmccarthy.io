@@ -10,7 +10,7 @@ export default function PageShell({
   children: React.ReactNode;
 }) {
   return (
-    <main id={id} className="px-10 pt-36 pb-28 scroll-mt-20">
+    <main id={id} className="px-10 pt-52 pb-28 scroll-mt-20">
       <div className="mb-14">
         <h1
           className="font-[family-name:var(--font-bebas)] leading-none tracking-wide"

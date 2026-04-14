@@ -6,6 +6,7 @@ import { track } from "@/lib/track";
 import { useEffect, useState } from "react";
 
 const links = [
+  { href: "/", label: "Home" },
   { href: "/#about", label: "About" },
   { href: "/#projects", label: "Projects" },
   { href: "/#thinking", label: "Thinking" },

@@ -3,6 +3,11 @@ import { NextRequest, NextResponse } from "next/server";
 export function middleware(req: NextRequest) {
   const response = NextResponse.next();
 
+  // If this request already has a visit_id cookie, skip logging (not a new visit)
+  if (req.cookies.get("visit_id")) {
+    return response;
+  }
+
   const ip =
     req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
     req.headers.get("x-real-ip") ||

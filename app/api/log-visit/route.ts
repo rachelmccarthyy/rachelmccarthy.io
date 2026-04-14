@@ -26,6 +26,21 @@ export async function POST(req: NextRequest) {
     }
 
     const supabase = getSupabase();
+
+    // Deduplicate: skip if same IP + path was logged in the last 30 seconds
+    const thirtySecondsAgo = new Date(Date.now() - 30_000).toISOString();
+    const { data: existing } = await supabase
+      .from("visits")
+      .select("id")
+      .eq("ip", ip)
+      .eq("path", path || "/")
+      .gte("visited_at", thirtySecondsAgo)
+      .limit(1);
+
+    if (existing && existing.length > 0) {
+      return NextResponse.json({ ok: true, deduplicated: true });
+    }
+
     await supabase.from("visits").insert({
       visit_id: visitId || null,
       ip,

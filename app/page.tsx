@@ -285,7 +285,7 @@ export default function Home() {
 
           {/* Left: name + metadata */}
           <div>
-            <a href="https://fynds-app-e7sb.vercel.app/" target="_blank" rel="noopener noreferrer"
+            <a href="https://fynds-app-eta.vercel.app" target="_blank" rel="noopener noreferrer"
               className="text-sm font-semibold text-fg underline hover:text-[#FFE033] hover:scale-110 transition-all duration-200 origin-right inline-block">
               Fynds ↗
             </a>
@@ -294,7 +294,7 @@ export default function Home() {
                 <span className="uppercase tracking-[0.08em] font-normal">Year</span>
                 <span className="font-medium">2026</span>
               </div>
-              <a href="https://fynds-app-e7sb.vercel.app/" target="_blank" rel="noopener noreferrer"
+              <a href="https://fynds-app-eta.vercel.app" target="_blank" rel="noopener noreferrer"
                 className="py-2.5 flex justify-between items-baseline hover:text-[#FFE033] hover:scale-110 transition-all duration-200 origin-right">
                 <span className="uppercase tracking-[0.08em] font-normal">Live</span>
                 <span className="font-medium">↗</span>
@@ -332,7 +332,7 @@ export default function Home() {
 
           {/* Left: name + metadata */}
           <div>
-            <a href="https://wondrous-custard-bb7156.netlify.app/" target="_blank" rel="noopener noreferrer"
+            <a href="https://diary-app-azure.vercel.app/" target="_blank" rel="noopener noreferrer"
               className="text-sm font-semibold text-fg underline hover:text-[#FFE033] hover:scale-110 transition-all duration-200 origin-right inline-block">
               Diary ↗
             </a>
@@ -341,7 +341,7 @@ export default function Home() {
                 <span className="uppercase tracking-[0.08em] font-normal">Year</span>
                 <span className="font-medium">2026</span>
               </div>
-              <a href="https://wondrous-custard-bb7156.netlify.app/" target="_blank" rel="noopener noreferrer"
+              <a href="https://diary-app-azure.vercel.app/" target="_blank" rel="noopener noreferrer"
                 className="py-2.5 flex justify-between items-baseline hover:text-[#FFE033] hover:scale-110 transition-all duration-200 origin-right">
                 <span className="uppercase tracking-[0.08em] font-normal">Live</span>
                 <span className="font-medium">↗</span>
@@ -352,7 +352,7 @@ export default function Home() {
               </div>
               <div className="py-2.5 flex justify-between">
                 <span className="uppercase tracking-[0.08em] font-normal">Stack</span>
-                <span className="font-medium">Next.js · TS</span>
+                <span className="font-medium">Next.js · Supabase · TS</span>
               </div>
             </div>
           </div>
@@ -360,10 +360,10 @@ export default function Home() {
           {/* Right: description */}
           <div className="text-sm text-fg leading-normal font-normal text-justify space-y-4">
             <p>
-              A privacy-first personal diary app that runs entirely in the browser — no accounts, no backend, no data leaving your device. Built to explore what a genuinely private journaling experience looks like when you design around the constraint of zero infrastructure. Features mood tracking, rich markdown editing, Spotify embeds, image uploads with automatic compression, and tag-based filtering, all persisted locally.
+              A personal diary app designed around the question: what would journaling look like if it actually knew you? Built with Next.js 16 and Supabase, it layers mood tracking, rich markdown entries, Spotify embeds, and image uploads with a set of features that turn a journal into something more contextual — a birth chart engine using real astronomical calculations, moon-phase-aware writing prompts, time capsule letters you seal until a future date, and a media tracker that links the books, shows, and music you&apos;re consuming to the entries you write about them.
             </p>
             <p>
-              The decision to go offline-first wasn&apos;t a technical shortcut — it was the product stance. Your most personal writing shouldn&apos;t require trusting a third party. Every feature was scoped through that lens: what does this need to be useful, and what does it need to leave out to stay honest about what it is.
+              The astrology system isn&apos;t decorative — it computes accurate natal charts from birth time and location, tracks Mercury retrograde periods, and generates journaling prompts that shift with the lunar cycle. The time capsule mechanic lets you write letters to your future self that stay sealed until their reveal date. The goal was to build a journaling tool that rewards sustained use: the longer you write, the richer the connections it surfaces.
             </p>
           </div>
 

@@ -44,16 +44,16 @@ export default function Nav() {
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-start justify-between px-5 md:px-10 py-5 md:py-6">
         <Link
           href="/"
-          className="inline-block text-base md:text-lg italic text-white no-underline font-[family-name:var(--font-display)] font-semibold tracking-[-0.02em] hover:text-[#FFE033] hover:scale-110 transition-all duration-200 origin-left"
+          className="inline-block text-base md:text-lg italic text-[#FFE033] no-underline font-[family-name:var(--font-display)] font-semibold tracking-[-0.02em] hover:text-white hover:scale-110 transition-all duration-200 origin-left"
         >
           Rachel McCarthy
         </Link>
 
         {/* Desktop nav */}
-        <ul className="hidden md:flex md:flex-col md:items-end md:gap-2 text-sm font-medium text-white tracking-[-0.01em]">
+        <ul className="hidden md:flex md:flex-col md:items-end md:gap-2 text-sm font-medium text-[#FFE033] tracking-[-0.01em]">
           {links.map(({ href, label }) => (
             <li key={href}>
-              <Link href={href} className="inline-block hover:text-[#FFE033] hover:scale-110 transition-all duration-200 origin-right">
+              <Link href={href} className="inline-block hover:text-white hover:scale-110 transition-all duration-200 origin-right">
                 {label} <span className="text-xs">↗</span>
               </Link>
             </li>
@@ -75,13 +75,13 @@ export default function Nav() {
       {/* Mobile menu overlay */}
       {menuOpen && (
         <div className="fixed inset-0 z-40 bg-black/95 backdrop-blur-sm md:hidden flex flex-col items-center justify-center">
-          <ul className="flex flex-col items-center gap-6 text-lg font-medium text-white">
+          <ul className="flex flex-col items-center gap-6 text-lg font-medium text-[#FFE033]">
             {links.map(({ href, label }) => (
               <li key={href}>
                 <Link
                   href={href}
                   onClick={() => setMenuOpen(false)}
-                  className="inline-block hover:text-[#FFE033] transition-colors duration-200"
+                  className="inline-block hover:text-white transition-colors duration-200"
                 >
                   {label}
                 </Link>

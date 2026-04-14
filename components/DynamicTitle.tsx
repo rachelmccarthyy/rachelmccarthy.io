@@ -10,7 +10,7 @@ const fonts = [
   { family: "var(--font-hanken)",       weight: 500 },
 ];
 
-export default function DynamicTitle({ children }: { children: React.ReactNode }) {
+export default function DynamicTitle({ children, color = "#000000" }: { children: React.ReactNode; color?: string }) {
   const [idx, setIdx] = useState(0);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export default function DynamicTitle({ children }: { children: React.ReactNode }
       className="leading-none tracking-normal transition-all duration-100"
       style={{
         fontSize: "clamp(48px, 5.5vw, 72px)",
-        color: "#FFE033",
+        color,
         fontFamily: fonts[idx].family,
         fontWeight: fonts[idx].weight,
       }}

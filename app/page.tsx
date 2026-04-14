@@ -183,15 +183,17 @@ function SectionHead({
   title,
   subtitle,
   index,
+  titleColor,
 }: {
   title: string;
   subtitle: string;
   index: string;
+  titleColor?: string;
 }) {
   return (
     <div className="mb-10">
       <div className="flex items-end justify-between gap-4">
-        <DynamicTitle>{title}</DynamicTitle>
+        <DynamicTitle color={titleColor}>{title}</DynamicTitle>
         <span className="text-[8px] md:text-[9px] uppercase tracking-[0.2em] md:tracking-[0.3em] text-fg font-medium pb-2 md:pb-3 whitespace-nowrap">{index}</span>
       </div>
       <p className="mt-3 text-[10px] uppercase tracking-[0.12em] text-fg font-normal">{subtitle}</p>
@@ -271,9 +273,9 @@ export default function Home() {
       </section>
 
       {/* Projects */}
-      <section id="projects" className="px-5 md:px-10 pt-14 pb-14 scroll-mt-20 border-t border-fg/[0.04] bg-black text-white" style={{ "--fg": "#ffffff", "--color-fg": "#ffffff" } as React.CSSProperties}>
+      <section id="projects" className="px-5 md:px-10 pt-14 pb-8 scroll-mt-20 border-t border-fg/[0.04] bg-black text-white" style={{ "--fg": "#ffffff", "--color-fg": "#ffffff" } as React.CSSProperties}>
         <div className="max-w-[1400px] mx-auto">
-        <SectionHead title="Projects" subtitle="Projects, side experiments, and things I've shipped" index="02 — 07" />
+        <SectionHead title="Projects" subtitle="Projects, side experiments, and things I've shipped" index="02 — 07" titleColor="#FFE033" />
 
         {/* Project: Diary */}
         <div className="grid grid-cols-1 md:grid-cols-[2rem_2.5fr_5fr] gap-6 md:gap-12 pt-6 border-t border-fg/[0.04]">
@@ -323,9 +325,9 @@ export default function Home() {
       </section>
 
       {/* Thinking */}
-      <section id="thinking" className="px-5 md:px-10 pt-14 pb-14 scroll-mt-20 border-t border-fg/[0.04] bg-black text-white" style={{ "--fg": "#ffffff", "--color-fg": "#ffffff" } as React.CSSProperties}>
+      <section id="thinking" className="px-5 md:px-10 pt-8 pb-14 scroll-mt-20 border-t border-fg/[0.04] bg-black text-white" style={{ "--fg": "#ffffff", "--color-fg": "#ffffff" } as React.CSSProperties}>
         <div className="max-w-[1400px] mx-auto">
-        <SectionHead title="Thinking" subtitle="I'm thinking thoughts" index="03 — 07" />
+        <SectionHead title="Thinking" subtitle="I'm thinking thoughts" index="03 — 07" titleColor="#FFE033" />
         <ThinkingGrid thoughts={THOUGHTS} />
         </div>
       </section>
@@ -345,7 +347,7 @@ export default function Home() {
       {/* Books */}
       <section id="books" className="px-5 md:px-10 pt-14 pb-14 scroll-mt-20 border-t border-fg/[0.04] bg-black text-white" style={{ "--fg": "#ffffff", "--color-fg": "#ffffff" } as React.CSSProperties}>
         <div className="max-w-[1400px] mx-auto">
-        <SectionHead title="Books" subtitle="Things I've read and loved" index="05 — 07" />
+        <SectionHead title="Books" subtitle="Things I've read and loved" index="05 — 07" titleColor="#FFE033" />
         <BookGrid books={BOOKS} />
         </div>
       </section>
@@ -361,7 +363,7 @@ export default function Home() {
       {/* Music */}
       <section id="playlists" className="px-5 md:px-10 pt-14 pb-14 scroll-mt-20 border-t border-fg/[0.04] bg-black text-white" style={{ "--fg": "#ffffff", "--color-fg": "#ffffff" } as React.CSSProperties}>
         <div className="max-w-[1400px] mx-auto">
-        <SectionHead title="Music" subtitle="What I'm listening to" index="07 — 07" />
+        <SectionHead title="Music" subtitle="What I'm listening to" index="07 — 07" titleColor="#FFE033" />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {PLAYLISTS.map((playlist) => (
             <div key={playlist.id}>

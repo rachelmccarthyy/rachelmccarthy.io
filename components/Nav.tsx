@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { track } from "@vercel/analytics";
+import { usePathname } from "next/navigation";
+import { track } from "@/lib/track";
 import { useEffect, useState } from "react";
 
 const links = [
@@ -15,14 +16,21 @@ const links = [
 ];
 
 export default function Nav() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const [pastHero, setPastHero] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
+    if (!isHome) {
+      setPastHero(true);
+      return;
+    }
     const onScroll = () => setPastHero(window.scrollY > window.innerHeight * 0.85);
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [isHome]);
 
   // Close menu on scroll past hero
   useEffect(() => {

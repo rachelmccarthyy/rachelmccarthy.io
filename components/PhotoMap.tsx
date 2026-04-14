@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback, useRef } from "react";
+import { track } from "@vercel/analytics";
 import { geoNaturalEarth1, geoPath } from "d3-geo";
 import { feature } from "topojson-client";
 import Image from "next/image";
@@ -163,7 +164,7 @@ function MobilePhotoRow({ loc, allPhotos, onExpand }: { loc: typeof LOCATIONS[nu
               key={src}
               className="flex-none relative overflow-hidden cursor-zoom-in"
               style={{ width: 120, height: 120 }}
-              onClick={() => onExpand(globalIdx)}
+              onClick={() => { track("photo_open", { location: loc.name, photo: src }); onExpand(globalIdx); }}
             >
               <Image src={src} alt={loc.name} fill className="object-cover" />
             </button>
@@ -274,7 +275,7 @@ export default function PhotoMap() {
                     preserveAspectRatio="xMidYMid slice"
                     onMouseEnter={(e) => { e.stopPropagation(); setHoveredPhoto(src); }}
                     onMouseLeave={() => setHoveredPhoto(null)}
-                    onClick={(e) => { e.stopPropagation(); setExpandedIndex(ALL_PHOTOS.findIndex((p) => p.src === src)); }}
+                    onClick={(e) => { e.stopPropagation(); track("photo_open", { location: loc.name, photo: src }); setExpandedIndex(ALL_PHOTOS.findIndex((p) => p.src === src)); }}
                     style={{
                       opacity: isLocHovered ? (isPhotoHovered ? 1 : 0.72) : 0.78,
                       transformOrigin: `${x + THUMB / 2}px ${y + THUMB / 2}px`,

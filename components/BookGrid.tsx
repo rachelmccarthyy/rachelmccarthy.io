@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { track } from "@vercel/analytics";
 import { useCallback, useEffect, useState } from "react";
 
 export type Book = {
@@ -61,7 +62,7 @@ export default function BookGrid({ books }: { books: Book[] }) {
         {books.map((book, i) => (
           <button
             key={book.title}
-            onClick={() => setExpandedIndex(i)}
+            onClick={() => { track("book_open", { title: book.title }); setExpandedIndex(i); }}
             className="grid grid-cols-[2rem_1fr_auto] gap-4 items-baseline py-3.5 border-b border-fg/[0.04] text-left w-full group cursor-pointer transition-all duration-200 hover:text-[#FFE033] hover:scale-[1.03]"
           >
             <span className="text-[10px] tabular-nums font-normal text-fg group-hover:text-[#FFE033] transition-colors">{String(i + 1).padStart(2, "0")}</span>
@@ -98,6 +99,7 @@ export default function BookGrid({ books }: { books: Book[] }) {
                   href={book.link}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => track("book_goodreads_click", { title: book.title })}
                   className="mt-6 inline-block text-[10px] uppercase tracking-[0.2em] font-medium text-[#FFE033] hover:underline"
                 >
                   View on Goodreads ↗

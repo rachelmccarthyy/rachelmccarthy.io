@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { track } from "@vercel/analytics";
 
 export type Thought = {
   title: string;
@@ -104,7 +105,7 @@ export default function ThinkingGrid({ thoughts }: { thoughts: Thought[] }) {
           {thoughts.map((thought, i) => (
             <button
               key={thought.title}
-              onClick={() => setExpandedIndex(i)}
+              onClick={() => { track("thought_open", { title: thought.title }); setExpandedIndex(i); }}
               className="flex-none w-[85vw] md:w-[calc((100%-3rem)/3)] snap-start text-left group cursor-pointer transition-all duration-200 hover:scale-[1.03]"
             >
               <div className="border-t border-fg/[0.07] pt-5">
@@ -165,6 +166,7 @@ export default function ThinkingGrid({ thoughts }: { thoughts: Thought[] }) {
                           href={s.url}
                           target="_blank"
                           rel="noopener noreferrer"
+                          onClick={() => track("thought_source_click", { source: s.label })}
                           className="text-[10px] uppercase tracking-[0.2em] font-medium text-[#FFE033] hover:underline"
                         >
                           {s.label} ↗

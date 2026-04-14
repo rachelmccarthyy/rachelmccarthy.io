@@ -6,6 +6,7 @@ import ArtGrid from "@/components/ArtGrid";
 import BookGrid from "@/components/BookGrid";
 import type { Book } from "@/components/BookGrid";
 import ThinkingGrid from "@/components/ThinkingGrid";
+import TrackedLink from "@/components/TrackedLink";
 
 const PLAYLISTS = [
   { title: "Instrumental", id: "5UM4ZrEJs2PkyM0zkw3NdZ" },
@@ -245,26 +246,26 @@ export default function Home() {
               />
             </div>
             <div className="divide-y divide-fg/[0.04] text-[12px] mt-3">
-              <a href="https://www.linkedin.com/in/rachelmccarthyy/" target="_blank" rel="noopener noreferrer"
+              <TrackedLink event="contact_click" properties={{ type: "linkedin" }} href="https://www.linkedin.com/in/rachelmccarthyy/" target="_blank" rel="noopener noreferrer"
                 className="py-2 flex justify-start gap-3 items-baseline hover:text-[#FFE033] hover:scale-[1.03] transition-all duration-200">
                 <span className="uppercase tracking-[0.08em] font-medium underline decoration-fg/20 hover:decoration-[#FFE033]/40 underline-offset-2">LinkedIn</span>
                 <span className="font-medium">↗</span>
-              </a>
-              <a href="https://github.com/rachelmccarthyy" target="_blank" rel="noopener noreferrer"
+              </TrackedLink>
+              <TrackedLink event="contact_click" properties={{ type: "github" }} href="https://github.com/rachelmccarthyy" target="_blank" rel="noopener noreferrer"
                 className="py-2 flex justify-start gap-3 items-baseline hover:text-[#FFE033] hover:scale-[1.03] transition-all duration-200">
                 <span className="uppercase tracking-[0.08em] font-medium underline decoration-fg/20 hover:decoration-[#FFE033]/40 underline-offset-2">GitHub</span>
                 <span className="font-medium">↗</span>
-              </a>
-              <a href="mailto:rachelmccarthyyy@gmail.com"
+              </TrackedLink>
+              <TrackedLink event="contact_click" properties={{ type: "email" }} href="mailto:rachelmccarthyyy@gmail.com"
                 className="py-2 flex justify-start gap-3 items-baseline hover:text-[#FFE033] hover:scale-[1.03] transition-all duration-200">
                 <span className="uppercase tracking-[0.08em] font-medium underline decoration-fg/20 hover:decoration-[#FFE033]/40 underline-offset-2">Email</span>
                 <span className="font-medium">↗</span>
-              </a>
-              <a href="/Rachel_McCarthy_Resume.pdf" target="_blank" rel="noopener noreferrer"
+              </TrackedLink>
+              <TrackedLink event="contact_click" properties={{ type: "resume" }} href="/Rachel_McCarthy_Resume.pdf" target="_blank" rel="noopener noreferrer"
                 className="py-2 flex justify-start gap-3 items-baseline hover:text-[#FFE033] hover:scale-[1.03] transition-all duration-200">
                 <span className="uppercase tracking-[0.08em] font-medium underline decoration-fg/20 hover:decoration-[#FFE033]/40 underline-offset-2">Résumé</span>
                 <span className="font-medium">↗</span>
-              </a>
+              </TrackedLink>
             </div>
           </div>
 
@@ -285,10 +286,10 @@ export default function Home() {
 
           {/* Left: name + metadata */}
           <div>
-            <a href="https://fynds-app-eta.vercel.app" target="_blank" rel="noopener noreferrer"
+            <TrackedLink event="project_click" properties={{ project: "fynds" }} href="https://fynds-app-eta.vercel.app" target="_blank" rel="noopener noreferrer"
               className="text-sm font-semibold text-fg underline hover:text-[#FFE033] hover:scale-110 transition-all duration-200 origin-right inline-block">
               Fynds ↗
-            </a>
+            </TrackedLink>
             <div className="mt-12 divide-y divide-fg/[0.07] text-[10px]">
               <div className="py-2.5 flex justify-between">
                 <span className="uppercase tracking-[0.08em] font-normal">Year</span>
@@ -332,10 +333,10 @@ export default function Home() {
 
           {/* Left: name + metadata */}
           <div>
-            <a href="https://diary-app-azure.vercel.app/" target="_blank" rel="noopener noreferrer"
+            <TrackedLink event="project_click" properties={{ project: "diary" }} href="https://diary-app-azure.vercel.app/" target="_blank" rel="noopener noreferrer"
               className="text-sm font-semibold text-fg underline hover:text-[#FFE033] hover:scale-110 transition-all duration-200 origin-right inline-block">
               Diary ↗
-            </a>
+            </TrackedLink>
             <div className="mt-12 divide-y divide-fg/[0.07] text-[10px]">
               <div className="py-2.5 flex justify-between">
                 <span className="uppercase tracking-[0.08em] font-normal">Year</span>

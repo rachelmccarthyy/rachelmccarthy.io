@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { track } from "@vercel/analytics";
 import { useCallback, useEffect, useState } from "react";
 
 type Artwork = {
@@ -59,7 +60,7 @@ export default function ArtGrid({ artworks }: { artworks: Artwork[] }) {
         <div className="md:row-span-2 flex flex-col">
           <div
             className="relative flex-1 overflow-hidden cursor-zoom-in min-h-0"
-            onClick={() => setExpandedIndex(0)}
+            onClick={() => { track("art_open", { title: buddha.title, artist: buddha.artist }); setExpandedIndex(0); }}
             onMouseEnter={() => setHoveredIndex(0)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
@@ -76,7 +77,7 @@ export default function ArtGrid({ artworks }: { artworks: Artwork[] }) {
               <div
                 className="relative overflow-hidden cursor-zoom-in"
                 style={{ aspectRatio: "1" }}
-                onClick={() => setExpandedIndex(idx)}
+                onClick={() => { track("art_open", { title: work.title, artist: work.artist }); setExpandedIndex(idx); }}
                 onMouseEnter={() => setHoveredIndex(idx)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >

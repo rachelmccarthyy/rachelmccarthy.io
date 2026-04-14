@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { track } from "@vercel/analytics";
 import { useEffect, useState } from "react";
 
 const links = [
@@ -46,7 +47,7 @@ export default function Nav() {
         <ul className="hidden md:flex md:flex-col md:items-start md:gap-2 text-sm font-medium text-[#FFE033] tracking-[-0.01em]" style={{ textShadow: "0 1px 4px rgba(0,0,0,0.5)" }}>
           {links.map(({ href, label }) => (
             <li key={href}>
-              <Link href={href} className="inline-block hover:text-white hover:scale-110 transition-all duration-200 origin-left">
+              <Link href={href} onClick={() => track("nav_click", { section: label, device: "desktop" })} className="inline-block hover:text-white hover:scale-110 transition-all duration-200 origin-left">
                 {label} <span className="text-xs">↗</span>
               </Link>
             </li>
@@ -73,7 +74,7 @@ export default function Nav() {
               <li key={href}>
                 <Link
                   href={href}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={() => { track("nav_click", { section: label, device: "mobile" }); setMenuOpen(false); }}
                   className="inline-block hover:text-white transition-colors duration-200"
                 >
                   {label}

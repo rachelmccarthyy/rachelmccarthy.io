@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { geoNaturalEarth1, geoPath } from "d3-geo";
 import { feature } from "topojson-client";
 import Image from "next/image";
@@ -118,6 +118,72 @@ function bezierPath(
   }
 }
 
+function MobilePhotoRow({ loc, allPhotos, onExpand }: { loc: typeof LOCATIONS[number]; allPhotos: typeof ALL_PHOTOS; onExpand: (i: number) => void }) {
+  const rowRef = useRef<HTMLDivElement>(null);
+  const [canLeft, setCanLeft] = useState(false);
+  const [canRight, setCanRight] = useState(false);
+
+  const update = useCallback(() => {
+    const el = rowRef.current;
+    if (!el) return;
+    setCanLeft(el.scrollLeft > 1);
+    setCanRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 1);
+  }, []);
+
+  useEffect(() => {
+    const el = rowRef.current;
+    if (!el) return;
+    update();
+    el.addEventListener("scroll", update, { passive: true });
+    return () => el.removeEventListener("scroll", update);
+  }, [update]);
+
+  const scroll = (dir: 1 | -1) => {
+    rowRef.current?.scrollBy({ left: dir * 128, behavior: "smooth" });
+  };
+
+  return (
+    <div>
+      <div className="flex items-baseline justify-between mb-3">
+        <p className="text-[9px] uppercase tracking-[0.3em] font-medium text-fg">{loc.name}</p>
+        <div className="flex items-center gap-3">
+          {canLeft && (
+            <button onClick={() => scroll(-1)} className="text-fg text-lg select-none" aria-label="Scroll left">←</button>
+          )}
+          {canRight && (
+            <button onClick={() => scroll(1)} className="text-fg text-lg select-none" aria-label="Scroll right">→</button>
+          )}
+        </div>
+      </div>
+      <div ref={rowRef} className="flex gap-2 overflow-x-auto pb-1" style={{ scrollbarWidth: "none", WebkitOverflowScrolling: "touch" }}>
+        {loc.photos.map((src) => {
+          const globalIdx = allPhotos.findIndex((p) => p.src === src);
+          return (
+            <button
+              key={src}
+              className="flex-none relative overflow-hidden cursor-zoom-in"
+              style={{ width: 120, height: 120 }}
+              onClick={() => onExpand(globalIdx)}
+            >
+              <Image src={src} alt={loc.name} fill className="object-cover" />
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function MobilePhotoList({ locations, allPhotos, onExpand }: { locations: typeof LOCATIONS; allPhotos: typeof ALL_PHOTOS; onExpand: (i: number) => void }) {
+  return (
+    <div className="md:hidden space-y-8 pr-5">
+      {locations.map((loc) => (
+        <MobilePhotoRow key={loc.name} loc={loc} allPhotos={allPhotos} onExpand={onExpand} />
+      ))}
+    </div>
+  );
+}
+
 export default function PhotoMap() {
   const [countries, setCountries] = useState<string[]>([]);
   const [hoveredLoc, setHoveredLoc] = useState<string | null>(null);
@@ -154,28 +220,7 @@ export default function PhotoMap() {
   return (
     <>
       {/* Mobile: scrollable list of locations */}
-      <div className="md:hidden space-y-8 pr-5">
-        {LOCATIONS.map((loc) => (
-          <div key={loc.name}>
-            <p className="text-[9px] uppercase tracking-[0.3em] font-medium text-fg mb-3">{loc.name}</p>
-            <div className="flex gap-2 overflow-x-auto pb-1">
-              {loc.photos.map((src) => {
-                const globalIdx = ALL_PHOTOS.findIndex((p) => p.src === src);
-                return (
-                  <button
-                    key={src}
-                    className="flex-none relative overflow-hidden cursor-zoom-in"
-                    style={{ width: 120, height: 120 }}
-                    onClick={() => setExpandedIndex(globalIdx)}
-                  >
-                    <Image src={src} alt={loc.name} fill className="object-cover" />
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        ))}
-      </div>
+      <MobilePhotoList locations={LOCATIONS} allPhotos={ALL_PHOTOS} onExpand={setExpandedIndex} />
 
       {/* Desktop: D3 map */}
       <div className="hidden md:block">

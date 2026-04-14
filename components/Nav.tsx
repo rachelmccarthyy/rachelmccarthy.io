@@ -5,7 +5,8 @@ import { useEffect, useState } from "react";
 
 const links = [
   { href: "/#about", label: "About" },
-  { href: "/#work", label: "Work" },
+  { href: "/#projects", label: "Projects" },
+  { href: "/#thinking", label: "Thinking" },
   { href: "/#photos", label: "Photos" },
   { href: "/#books", label: "Books" },
   { href: "/#art", label: "Art" },
@@ -14,12 +15,18 @@ const links = [
 
 export default function Nav() {
   const [pastHero, setPastHero] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setPastHero(window.scrollY > window.innerHeight * 0.85);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Close menu on scroll past hero
+  useEffect(() => {
+    if (pastHero) setMenuOpen(false);
+  }, [pastHero]);
 
   if (pastHero) return (
     <button
@@ -33,22 +40,56 @@ export default function Nav() {
   );
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex items-start justify-between px-5 md:px-10 py-5 md:py-6">
-      <Link
-        href="/"
-        className="inline-block text-base md:text-lg italic text-white no-underline font-[family-name:var(--font-display)] font-semibold tracking-[-0.02em] hover:text-[#FFE033] hover:scale-110 transition-all duration-200 origin-left"
-      >
-        Rachel McCarthy
-      </Link>
-      <ul className="flex flex-row flex-wrap justify-end gap-x-3 gap-y-1 md:flex-col md:items-end md:gap-2 text-[11px] md:text-sm font-medium text-white tracking-[-0.01em]">
-        {links.map(({ href, label }) => (
-          <li key={href}>
-            <Link href={href} className="inline-block hover:text-[#FFE033] hover:scale-110 transition-all duration-200 origin-right">
-              {label} <span className="text-xs">↗</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <>
+      <nav className="fixed top-0 left-0 right-0 z-50 flex items-start justify-between px-5 md:px-10 py-5 md:py-6">
+        <Link
+          href="/"
+          className="inline-block text-base md:text-lg italic text-white no-underline font-[family-name:var(--font-display)] font-semibold tracking-[-0.02em] hover:text-[#FFE033] hover:scale-110 transition-all duration-200 origin-left"
+        >
+          Rachel McCarthy
+        </Link>
+
+        {/* Desktop nav */}
+        <ul className="hidden md:flex md:flex-col md:items-end md:gap-2 text-sm font-medium text-white tracking-[-0.01em]">
+          {links.map(({ href, label }) => (
+            <li key={href}>
+              <Link href={href} className="inline-block hover:text-[#FFE033] hover:scale-110 transition-all duration-200 origin-right">
+                {label} <span className="text-xs">↗</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        {/* Mobile hamburger */}
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-[5px]"
+          aria-label="Toggle menu"
+        >
+          <span className={`block w-5 h-[1.5px] bg-white transition-all duration-200 ${menuOpen ? "translate-y-[6.5px] rotate-45" : ""}`} />
+          <span className={`block w-5 h-[1.5px] bg-white transition-all duration-200 ${menuOpen ? "opacity-0" : ""}`} />
+          <span className={`block w-5 h-[1.5px] bg-white transition-all duration-200 ${menuOpen ? "-translate-y-[6.5px] -rotate-45" : ""}`} />
+        </button>
+      </nav>
+
+      {/* Mobile menu overlay */}
+      {menuOpen && (
+        <div className="fixed inset-0 z-40 bg-black/95 backdrop-blur-sm md:hidden flex flex-col items-center justify-center">
+          <ul className="flex flex-col items-center gap-6 text-lg font-medium text-white">
+            {links.map(({ href, label }) => (
+              <li key={href}>
+                <Link
+                  href={href}
+                  onClick={() => setMenuOpen(false)}
+                  className="inline-block hover:text-[#FFE033] transition-colors duration-200"
+                >
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </>
   );
 }

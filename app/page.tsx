@@ -277,11 +277,58 @@ export default function Home() {
         <div className="max-w-[1400px] mx-auto">
         <SectionHead title="Projects" subtitle="Projects, side experiments, and things I've shipped" index="02 — 07" titleColor="#FFE033" />
 
-        {/* Project: Diary */}
+        {/* Project: Fynds */}
         <div className="grid grid-cols-1 md:grid-cols-[2rem_2.5fr_5fr] gap-6 md:gap-12 pt-6 border-t border-fg/[0.04]">
 
           {/* Number */}
           <span className="hidden md:block text-[10px] tabular-nums font-normal text-fg pt-0.5">01</span>
+
+          {/* Left: name + metadata */}
+          <div>
+            <a href="https://fynds-app-e7sb.vercel.app/" target="_blank" rel="noopener noreferrer"
+              className="text-sm font-semibold text-fg underline hover:text-[#FFE033] hover:scale-110 transition-all duration-200 origin-right inline-block">
+              Fynds ↗
+            </a>
+            <div className="mt-12 divide-y divide-fg/[0.07] text-[10px]">
+              <div className="py-2.5 flex justify-between">
+                <span className="uppercase tracking-[0.08em] font-normal">Year</span>
+                <span className="font-medium">2026</span>
+              </div>
+              <a href="https://fynds-app-e7sb.vercel.app/" target="_blank" rel="noopener noreferrer"
+                className="py-2.5 flex justify-between items-baseline hover:text-[#FFE033] hover:scale-110 transition-all duration-200 origin-right">
+                <span className="uppercase tracking-[0.08em] font-normal">Live</span>
+                <span className="font-medium">↗</span>
+              </a>
+              <div className="py-2.5 flex justify-between">
+                <span className="uppercase tracking-[0.08em] font-normal">Type</span>
+                <span className="font-medium">Side project</span>
+              </div>
+              <div className="py-2.5 flex justify-between">
+                <span className="uppercase tracking-[0.08em] font-normal">Stack</span>
+                <span className="font-medium">Next.js · TS · Claude API</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right: description */}
+          <div className="text-sm text-fg leading-normal font-normal text-justify space-y-4">
+            <p>
+              An AI-powered personal shopping stylist. Describe what you&apos;re looking for in plain English — a specific item or an outfit for an occasion — and Fynds returns real, shoppable product recommendations from across the web. It starts with a style profile quiz that captures your aesthetic, budget, and sizing, then uses Claude to translate natural-language requests into targeted product searches.
+            </p>
+            <p>
+              The interesting product problem was bridging intent and inventory. People don&apos;t think in search keywords — they think in contexts: &ldquo;something for a rooftop dinner in July&rdquo; or &ldquo;comfortable but not frumpy.&rdquo; Fynds treats the AI layer as a translation service between how people actually describe what they want and what&apos;s actually available to buy.
+            </p>
+          </div>
+
+        </div>
+
+        <div className="my-12" />
+
+        {/* Project: Diary */}
+        <div className="grid grid-cols-1 md:grid-cols-[2rem_2.5fr_5fr] gap-6 md:gap-12 pt-6 border-t border-fg/[0.04]">
+
+          {/* Number */}
+          <span className="hidden md:block text-[10px] tabular-nums font-normal text-fg pt-0.5">02</span>
 
           {/* Left: name + metadata */}
           <div>

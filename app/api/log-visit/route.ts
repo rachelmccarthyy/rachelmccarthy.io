@@ -13,7 +13,7 @@ interface GeoData {
 
 export async function POST(req: NextRequest) {
   try {
-    const { ip, path } = await req.json();
+    const { ip, path, visitId } = await req.json();
     if (!ip) return NextResponse.json({ ok: false }, { status: 400 });
 
     // Get geolocation from ip-api.com (free, no key needed)
@@ -27,6 +27,7 @@ export async function POST(req: NextRequest) {
 
     const supabase = getSupabase();
     await supabase.from("visits").insert({
+      visit_id: visitId || null,
       ip,
       path: path || "/",
       city: geo.city || null,

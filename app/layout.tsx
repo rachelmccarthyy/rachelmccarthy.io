@@ -18,6 +18,7 @@ import {
 } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import Nav from "@/components/Nav";
+import TimeTracker from "@/components/TimeTracker";
 import "./globals.css";
 
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"], weight: ["800", "900"] });
@@ -48,6 +49,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Nav />
         {children}
         <Analytics />
+        <TimeTracker />
       </body>
     </html>
   );

@@ -28,7 +28,7 @@ export default function Hero() {
       <Image src="/hero1.png" alt="" fill className="object-cover object-center" style={{ filter: "contrast(0.65) brightness(1.05)" }} priority />
 
       {/* Text panel — right side, overlaid */}
-      <div className="relative z-10 ml-auto w-full md:w-[38%] flex flex-col justify-center items-end pl-6 pr-6 md:pl-12 md:pr-10 py-24 md:py-32 text-right">
+      <div className="relative z-10 ml-auto w-full md:w-[38%] flex flex-col justify-center items-end pl-6 pr-6 md:pl-12 md:pr-10 py-24 md:pt-52 md:pb-32 text-right">
 
         <h1
           className="leading-[0.88] tracking-tight transition-all duration-100"

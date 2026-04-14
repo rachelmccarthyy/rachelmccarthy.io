@@ -3,6 +3,8 @@ import Image from "next/image";
 import PhotoMap from "@/components/PhotoMap";
 import DynamicTitle from "@/components/DynamicTitle";
 import ArtGrid from "@/components/ArtGrid";
+import BookGrid from "@/components/BookGrid";
+import type { Book } from "@/components/BookGrid";
 
 const PLAYLISTS = [
   { title: "Instrumental", id: "5UM4ZrEJs2PkyM0zkw3NdZ" },
@@ -55,15 +57,79 @@ const ARTWORKS = [
   },
 ];
 
-const BOOKS = [
-  { title: "The Twin", author: "Gerbrand Bakker", tag: "Fiction" },
-  { title: "The Remains of the Day", author: "Kazuo Ishiguro", tag: "Fiction" },
-  { title: "A Month in the Country", author: "J.L. Carr", tag: "Fiction" },
-  { title: "Frankenstein", author: "Mary Shelley", tag: "Fiction" },
-  { title: "Six Records of a Floating Life", author: "Shen Fu", tag: "Memoir" },
-  { title: "All the Beauty in the World", author: "Patrick Bringley", tag: "Memoir" },
-  { title: "How to Murder Your Life", author: "Cat Marnell", tag: "Memoir" },
-  { title: "Dancing on My Grave", author: "Gelsey Kirkland", tag: "Memoir" },
+const BOOKS: Book[] = [
+  {
+    title: "The Twin",
+    author: "Gerbrand Bakker",
+    tag: "Fiction",
+    isbn: "9781933372389",
+    cover: "/The twin.jpg",
+    link: "https://www.goodreads.com/book/show/3241879-the-twin",
+    summary: "A quiet, almost airless Dutch novel. A man returns to his father's farm after his twin brother dies young and lives out a deliberately small life. Bakker writes absence better than almost anyone — what remains when you've given up.",
+  },
+  {
+    title: "The Remains of the Day",
+    author: "Kazuo Ishiguro",
+    tag: "Fiction",
+    isbn: "9780679731726",
+    cover: "/kazuo.jpg",
+    link: "https://www.goodreads.com/book/show/28921.The_Remains_of_the_Day",
+    summary: "Stevens, an aging English butler, drives through the countryside telling himself his life of service was worth it. Every sentence is a small act of repression. Ishiguro makes you ache for a man who can't.",
+  },
+  {
+    title: "A Month in the Country",
+    author: "J.L. Carr",
+    tag: "Fiction",
+    isbn: "9781590173534",
+    cover: "/JL CARR.jpg",
+    link: "https://www.goodreads.com/book/show/376247.A_Month_in_the_Country",
+    summary: "A WWI survivor spends a summer in a Yorkshire village uncovering a medieval mural. Luminous and brief — the kind of book that makes you want to be somewhere very still and very present.",
+  },
+  {
+    title: "Frankenstein",
+    author: "Mary Shelley",
+    tag: "Fiction",
+    isbn: "9780141439471",
+    cover: "/frankenstein.webp",
+    link: "https://www.goodreads.com/book/show/35031085-frankenstein",
+    summary: "Less a monster story than a meditation on creation, rejection, and what we owe the things we make. Shelley wrote it at nineteen. The creature is far more sympathetic than his maker.",
+  },
+  {
+    title: "Six Records of a Floating Life",
+    author: "Shen Fu",
+    tag: "Memoir",
+    isbn: "9780140443623",
+    cover: "/shen fu.jpg",
+    link: "https://www.goodreads.com/book/show/303484.Six_Records_of_a_Floating_Life",
+    summary: "A 19th-century Chinese memoir of a modest, tender marriage. Shen Fu describes small domestic pleasures with such precision and care that the losses hit harder for it.",
+  },
+  {
+    title: "All the Beauty in the World",
+    author: "Patrick Bringley",
+    tag: "Memoir",
+    isbn: "9781982197056",
+    cover: "/all the beauty in the world.jpg",
+    link: "https://www.goodreads.com/book/show/62039892-all-the-beauty-in-the-world",
+    summary: "Patrick Bringley takes a job as a Met guard after his brother dies and spends eight years thinking about art and grief. Quietly one of the best books I've read about what museums are actually for.",
+  },
+  {
+    title: "How to Murder Your Life",
+    author: "Cat Marnell",
+    tag: "Memoir",
+    isbn: "9781476739533",
+    cover: "/cat marnell.jpg",
+    link: "https://www.goodreads.com/book/show/25429193-how-to-murder-your-life",
+    summary: "Cat Marnell's memoir about addiction and New York's beauty world is chaotic, compulsive, and oddly honest. Not a redemption story. Better for it.",
+  },
+  {
+    title: "Dancing on My Grave",
+    author: "Gelsey Kirkland",
+    tag: "Memoir",
+    isbn: "9780385042635",
+    cover: "/dancing on my grave.jpg",
+    link: "https://www.goodreads.com/book/show/362600.Dancing_on_My_Grave",
+    summary: "Gelsey Kirkland writes about training under Balanchine and Baryshnikov with unflinching clarity. Ballet at its most brutal — physically and psychologically. Hard to put down.",
+  },
 ];
 
 function SectionHead({
@@ -96,7 +162,7 @@ export default function Home() {
         {/* Title sits above the two-column content */}
         <DynamicTitle>About</DynamicTitle>
 
-        <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-8 md:gap-12 items-stretch mt-6">
+        <div className="grid grid-cols-1 md:grid-cols-[2.5fr_3fr] gap-8 md:gap-12 items-stretch mt-6">
 
           {/* Col 1: text */}
           <div className="text-sm text-fg leading-normal font-normal text-justify space-y-4">
@@ -118,28 +184,35 @@ export default function Home() {
                 src="/profile3.png"
                 alt="Rachel McCarthy"
                 fill
-                className="object-contain object-top"
+                className="object-contain object-left-bottom"
+              />
+              <Image
+                src="/name-seal.png"
+                alt="Name seal"
+                width={100}
+                height={100}
+                className="absolute bottom-0 right-3 opacity-90"
               />
             </div>
-            <div className="divide-y divide-fg/[0.04] text-[10px] mt-3">
+            <div className="divide-y divide-fg/[0.04] text-[12px] mt-3">
               <a href="https://www.linkedin.com/in/rachelmccarthyy/" target="_blank" rel="noopener noreferrer"
-                className="py-2 flex justify-between items-baseline hover:text-[#FFE033] hover:scale-110 transition-all duration-200 origin-right">
-                <span className="uppercase tracking-[0.08em] font-normal">LinkedIn</span>
+                className="py-2 flex justify-start gap-3 items-baseline hover:text-[#FFE033] hover:scale-[1.03] transition-all duration-200">
+                <span className="uppercase tracking-[0.08em] font-medium">LinkedIn</span>
                 <span className="font-medium">↗</span>
               </a>
               <a href="https://github.com/rachelmccarthyy" target="_blank" rel="noopener noreferrer"
-                className="py-2 flex justify-between items-baseline hover:text-[#FFE033] hover:scale-110 transition-all duration-200 origin-right">
-                <span className="uppercase tracking-[0.08em] font-normal">GitHub</span>
+                className="py-2 flex justify-start gap-3 items-baseline hover:text-[#FFE033] hover:scale-[1.03] transition-all duration-200">
+                <span className="uppercase tracking-[0.08em] font-medium">GitHub</span>
                 <span className="font-medium">↗</span>
               </a>
               <a href="mailto:rachelmccarthyyy@gmail.com"
-                className="py-2 flex justify-between items-baseline hover:text-[#FFE033] hover:scale-110 transition-all duration-200 origin-right">
-                <span className="uppercase tracking-[0.08em] font-normal">Email</span>
+                className="py-2 flex justify-start gap-3 items-baseline hover:text-[#FFE033] hover:scale-[1.03] transition-all duration-200">
+                <span className="uppercase tracking-[0.08em] font-medium">Email</span>
                 <span className="font-medium">↗</span>
               </a>
               <a href="/Rachel_McCarthy_Resume.pdf" target="_blank" rel="noopener noreferrer"
-                className="py-2 flex justify-between items-baseline hover:text-[#FFE033] hover:scale-110 transition-all duration-200 origin-right">
-                <span className="uppercase tracking-[0.08em] font-normal">Résumé</span>
+                className="py-2 flex justify-start gap-3 items-baseline hover:text-[#FFE033] hover:scale-[1.03] transition-all duration-200">
+                <span className="uppercase tracking-[0.08em] font-medium">Résumé</span>
                 <span className="font-medium">↗</span>
               </a>
             </div>
@@ -158,7 +231,7 @@ export default function Home() {
           {/* Left: name + metadata */}
           <div>
             <a href="https://wondrous-custard-bb7156.netlify.app/" target="_blank" rel="noopener noreferrer"
-              className="text-sm font-semibold text-fg hover:text-[#FFE033] hover:scale-110 transition-all duration-200 origin-right inline-block">
+              className="text-sm font-semibold text-fg underline hover:text-[#FFE033] hover:scale-110 transition-all duration-200 origin-right inline-block">
               Diary ↗
             </a>
             <div className="mt-3 divide-y divide-fg/[0.07] text-[10px]">
@@ -212,18 +285,7 @@ export default function Home() {
       {/* Books */}
       <section id="books" className="px-5 md:px-10 pt-14 pb-14 scroll-mt-20 border-t border-fg/[0.04] bg-black text-white" style={{ "--fg": "#ffffff", "--color-fg": "#ffffff" } as React.CSSProperties}>
         <SectionHead title="Books" subtitle="Things I've read and loved" index="04 — 06" />
-        <div className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-4 md:grid-flow-col md:gap-x-16">
-          {BOOKS.map((book, i) => (
-            <div key={book.title} className="grid grid-cols-[2rem_1fr_auto] gap-4 items-baseline py-3.5 border-b border-fg/[0.04]">
-              <span className="text-[10px] tabular-nums font-normal text-fg">{String(i + 1).padStart(2, "0")}</span>
-              <div>
-                <span className="text-sm font-semibold text-fg">{book.title}</span>
-                <span className="text-xs italic font-normal text-fg ml-2.5">{book.author}</span>
-              </div>
-              <span className="text-[9px] uppercase tracking-[0.2em] text-fg font-normal">{book.tag}</span>
-            </div>
-          ))}
-        </div>
+        <BookGrid books={BOOKS} />
       </section>
 
       {/* Art */}

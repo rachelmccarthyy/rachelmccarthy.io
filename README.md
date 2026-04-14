@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# rachelmccarthy.io
 
-## Getting Started
+**Personal portfolio site with custom visitor analytics, D3 geo visualizations, and content across essays, film photography, art, and music.**
 
-First, run the development server:
+[Live Site](https://rachelmccarthy.io)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## What It Is
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+A personal site built from scratch — not a template. Seven sections: About, Projects, Thinking (essays), Photos (film photography), Books, Art, and Music (playlists). The goal was to build something that reflects how I actually think about product, design, and the things I care about.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## What's Interesting Under the Hood
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Custom Analytics Stack**
+I built the visitor analytics system from scratch rather than dropping in Google Analytics. Custom middleware assigns a visit_id cookie and logs visits via a fire-and-forget API call to Supabase, storing IP, path, city, region, country, lat/lon, ISP, and org data. Row-level security (RLS) is configured so only the service key can read/write.
 
-## Learn More
+This was a deliberate decision — I wanted to understand the full data pipeline, not just see a dashboard. It also gave me control over what gets tracked and how.
 
-To learn more about Next.js, take a look at the following resources:
+**Selective Page Tracking**
+The middleware matcher only logs page visits (/, /about, /art, /books, etc.), not static assets or API routes. Intentional instrumentation — tracking what matters, not everything.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**D3 Geo Visualizations**
+Using d3-geo and topojson for geographic visualization of visitor data. This was partly functional (seeing where visitors come from) and partly an excuse to learn D3.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Image Optimization**
+Next.js image optimization with remote patterns configured for external sources like OpenLibrary book covers. Small detail, but performance matters.
 
-## Deploy on Vercel
+## Essays
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The site includes published essays that demonstrate how I think about product, design, and economics:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **The End of the Front End** — AI agents replacing UI as the product surface
+- **Lemons, Cars, and the NYC Marriage Market** — Akerlof's information asymmetry applied to dating
+- **Jobs to Be Done, Actually** — Practical JTBD framework application
+- **Function of Design vs. Design of Function** — A distinction between design serving function and function producing design
+- **Interior Design is Product Design** — Physical space as UX
+
+## Stack
+
+Next.js 16 · React 19 · TypeScript · Tailwind CSS · Supabase · D3 · Vercel
+
+---
+
+Built by [Rachel McCarthy](https://rachelmccarthy.io)

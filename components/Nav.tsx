@@ -22,10 +22,7 @@ export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    if (!isHome) {
-      setPastHero(true);
-      return;
-    }
+    if (!isHome) return;
     const onScroll = () => setPastHero(window.scrollY > window.innerHeight * 0.85);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -36,6 +33,23 @@ export default function Nav() {
   useEffect(() => {
     if (pastHero) setMenuOpen(false);
   }, [pastHero]);
+
+  if (!isHome) {
+    return (
+      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-start gap-x-5 gap-y-2 flex-wrap px-5 md:px-10 py-4 md:py-5 bg-bg/90 backdrop-blur-sm border-b border-border">
+        {links.map(({ href, label }) => (
+          <Link
+            key={href}
+            href={href}
+            onClick={() => track("nav_click", { section: label, device: "desktop" })}
+            className="text-[11px] md:text-xs uppercase tracking-[0.12em] font-medium text-fg/70 hover:text-[#FFE033] transition-colors"
+          >
+            {label}
+          </Link>
+        ))}
+      </nav>
+    );
+  }
 
   if (pastHero) return (
     <button

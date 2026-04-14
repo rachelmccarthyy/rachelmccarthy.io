@@ -10,6 +10,16 @@ type Artwork = {
   year: string;
 };
 
+function Caption({ work }: { work: Artwork }) {
+  return (
+    <div className="mt-2">
+      <p className="text-[10px] uppercase tracking-[0.08em] font-normal text-fg">{work.artist}</p>
+      <p className="text-xs font-semibold text-fg leading-snug mt-0.5">{work.title}</p>
+      <p className="text-[10px] font-normal text-fg mt-0.5">{work.year}</p>
+    </div>
+  );
+}
+
 export default function ArtGrid({ artworks }: { artworks: Artwork[] }) {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -41,22 +51,12 @@ export default function ArtGrid({ artworks }: { artworks: Artwork[] }) {
     };
   }
 
-  function Caption({ work }: { work: Artwork }) {
-    return (
-      <div className="mt-2">
-        <p className="text-[10px] uppercase tracking-[0.08em] font-normal text-fg">{work.artist}</p>
-        <p className="text-xs font-semibold text-fg leading-snug mt-0.5">{work.title}</p>
-        <p className="text-[10px] font-normal text-fg mt-0.5">{work.year}</p>
-      </div>
-    );
-  }
-
   return (
     <>
-      <div className="grid gap-3" style={{ gridTemplateColumns: "1.6fr 1fr 1fr 1fr" }}>
+      <div className="grid gap-3 grid-cols-2 md:grid-cols-[1.6fr_1fr_1fr_1fr]">
 
-        {/* Buddha — spans 2 rows */}
-        <div className="row-span-2 flex flex-col">
+        {/* Buddha — spans 2 rows on desktop */}
+        <div className="md:row-span-2 flex flex-col">
           <div
             className="relative flex-1 overflow-hidden cursor-zoom-in min-h-0"
             onClick={() => setExpandedIndex(0)}
@@ -98,16 +98,16 @@ export default function ArtGrid({ artworks }: { artworks: Artwork[] }) {
           >
             <p className="text-white/60 text-[11px] uppercase tracking-[0.25em] font-medium mb-4">{work.artist}</p>
             <div
-              className="relative flex items-center gap-6 px-16"
+              className="relative flex items-center gap-3 md:gap-6 px-8 md:px-16"
               onClick={(e) => e.stopPropagation()}
             >
-              <button onClick={() => navigate(-1)} className="text-white/50 hover:text-white text-3xl leading-none transition-colors select-none">←</button>
+              <button onClick={() => navigate(-1)} className="text-white/50 hover:text-white text-2xl md:text-3xl leading-none transition-colors select-none flex-none">←</button>
               <Image
                 src={work.src}
                 alt={work.title}
                 width={1200}
                 height={900}
-                className="max-h-[80vh] max-w-[80vw] w-auto h-auto object-contain"
+                className="max-h-[75vh] max-w-[85vw] md:max-h-[80vh] md:max-w-[80vw] w-auto h-auto object-contain"
               />
               <button onClick={() => navigate(1)} className="text-white/50 hover:text-white text-3xl leading-none transition-colors select-none">→</button>
             </div>

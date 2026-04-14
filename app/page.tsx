@@ -92,11 +92,11 @@ export default function Home() {
       <Hero />
 
       {/* About */}
-      <section id="about" className="px-10 pt-14 pb-14 scroll-mt-20 border-t border-fg/[0.04]">
+      <section id="about" className="px-5 md:px-10 pt-14 pb-14 scroll-mt-20 border-t border-fg/[0.04]">
         {/* Title sits above the two-column content */}
         <DynamicTitle>About</DynamicTitle>
 
-        <div className="grid gap-12 items-stretch mt-6" style={{ gridTemplateColumns: "2fr 3fr" }}>
+        <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-8 md:gap-12 items-stretch mt-6">
 
           {/* Col 1: text */}
           <div className="text-sm text-fg leading-normal font-normal text-justify space-y-4">
@@ -113,7 +113,7 @@ export default function Home() {
 
           {/* Col 2: image + contact */}
           <div className="flex flex-col">
-            <div className="relative flex-1 overflow-hidden min-h-0">
+            <div className="relative overflow-hidden min-h-[320px] md:flex-1 md:min-h-0">
               <Image
                 src="/profile3.png"
                 alt="Rachel McCarthy"
@@ -149,11 +149,11 @@ export default function Home() {
       </section>
 
       {/* Work */}
-      <section id="work" className="px-10 pt-14 pb-14 scroll-mt-20 border-t border-fg/[0.04] bg-black text-white" style={{ "--fg": "#ffffff", "--color-fg": "#ffffff" } as React.CSSProperties}>
+      <section id="work" className="px-5 md:px-10 pt-14 pb-14 scroll-mt-20 border-t border-fg/[0.04] bg-black text-white" style={{ "--fg": "#ffffff", "--color-fg": "#ffffff" } as React.CSSProperties}>
         <SectionHead title="Work" subtitle="Projects, side experiments, and things I've shipped" index="02 — 06" />
 
         {/* Project: Diary */}
-        <div className="grid grid-cols-[180px_1fr_1fr] gap-12 pt-6 border-t border-fg/[0.04]">
+        <div className="grid grid-cols-1 md:grid-cols-[180px_1fr_1fr] gap-6 md:gap-12 pt-6 border-t border-fg/[0.04]">
 
           {/* Left: name + metadata */}
           <div>
@@ -201,18 +201,18 @@ export default function Home() {
 
       {/* Photos */}
       <section id="photos" className="pt-14 pb-14 scroll-mt-20 border-t border-fg/[0.04]">
-        <div className="px-10 mb-6">
+        <div className="px-5 md:px-10 mb-6">
           <SectionHead title="Photos" subtitle="Shot on film" index="03 — 06" />
         </div>
-        <div className="pl-10">
+        <div className="pl-5 md:pl-10">
           <PhotoMap />
         </div>
       </section>
 
       {/* Books */}
-      <section id="books" className="px-10 pt-14 pb-14 scroll-mt-20 border-t border-fg/[0.04] bg-black text-white" style={{ "--fg": "#ffffff", "--color-fg": "#ffffff" } as React.CSSProperties}>
+      <section id="books" className="px-5 md:px-10 pt-14 pb-14 scroll-mt-20 border-t border-fg/[0.04] bg-black text-white" style={{ "--fg": "#ffffff", "--color-fg": "#ffffff" } as React.CSSProperties}>
         <SectionHead title="Books" subtitle="Things I've read and loved" index="04 — 06" />
-        <div className="grid grid-cols-2 grid-rows-4 grid-flow-col gap-x-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-4 md:grid-flow-col md:gap-x-16">
           {BOOKS.map((book, i) => (
             <div key={book.title} className="grid grid-cols-[2rem_1fr_auto] gap-4 items-baseline py-3.5 border-b border-fg/[0.04]">
               <span className="text-[10px] tabular-nums font-normal text-fg">{String(i + 1).padStart(2, "0")}</span>
@@ -227,15 +227,15 @@ export default function Home() {
       </section>
 
       {/* Art */}
-      <section id="art" className="px-10 pt-14 pb-14 scroll-mt-20 border-t border-fg/[0.04]">
+      <section id="art" className="px-5 md:px-10 pt-14 pb-14 scroll-mt-20 border-t border-fg/[0.04]">
         <SectionHead title="Art" subtitle="Works that have stayed with me" index="05 — 06" />
         <ArtGrid artworks={ARTWORKS} />
       </section>
 
       {/* Music */}
-      <section id="playlists" className="px-10 pt-14 pb-14 scroll-mt-20 border-t border-fg/[0.04] bg-black text-white" style={{ "--fg": "#ffffff", "--color-fg": "#ffffff" } as React.CSSProperties}>
+      <section id="playlists" className="px-5 md:px-10 pt-14 pb-14 scroll-mt-20 border-t border-fg/[0.04] bg-black text-white" style={{ "--fg": "#ffffff", "--color-fg": "#ffffff" } as React.CSSProperties}>
         <SectionHead title="Music" subtitle="What I'm listening to" index="06 — 06" />
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {PLAYLISTS.map((playlist) => (
             <div key={playlist.id}>
               <iframe

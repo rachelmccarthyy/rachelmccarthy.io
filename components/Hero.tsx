@@ -28,11 +28,11 @@ export default function Hero() {
       <Image src="/hero1.png" alt="" fill className="object-cover object-center" style={{ filter: "contrast(0.65) brightness(1.05)" }} priority />
 
       {/* Text panel — right side, overlaid */}
-      <div className="relative z-10 ml-auto w-full md:w-[38%] flex flex-col justify-center items-end pl-12 pr-10 py-32 text-right">
+      <div className="relative z-10 ml-auto w-full md:w-[38%] flex flex-col justify-center items-end pl-6 pr-6 md:pl-12 md:pr-10 py-24 md:py-32 text-right">
 
         <h1
           className="leading-[0.88] tracking-tight transition-all duration-100"
-          style={{ fontSize: "clamp(96px, 10vw, 172px)", fontFamily: fonts[fontIndex], fontWeight: 800 }}
+          style={{ fontSize: "clamp(56px, 14vw, 172px)", fontFamily: fonts[fontIndex], fontWeight: 800 }}
         >
           <span className="block" style={{ color: "#FFE033" }}>Rachel</span>
           <span className="block" style={{ color: "#FFE033" }}>McCarthy</span>
@@ -40,7 +40,7 @@ export default function Hero() {
 
         <div className="mt-6 mb-12 h-px w-8 bg-white/60 self-end" />
 
-        <p className="text-sm font-medium leading-snug tracking-[0.02em] whitespace-nowrap italic text-white">
+        <p className="text-sm font-medium leading-snug tracking-[0.02em] italic text-white">
           human first product manager.
         </p>
 

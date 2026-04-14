@@ -33,14 +33,14 @@ export default function Nav() {
   );
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex items-start justify-between px-10 py-6">
+    <nav className="fixed top-0 left-0 right-0 z-50 flex items-start justify-between px-5 md:px-10 py-5 md:py-6">
       <Link
         href="/"
-        className="inline-block text-lg italic text-white no-underline font-[family-name:var(--font-display)] font-semibold tracking-[-0.02em] hover:text-[#FFE033] hover:scale-110 transition-all duration-200 origin-left"
+        className="inline-block text-base md:text-lg italic text-white no-underline font-[family-name:var(--font-display)] font-semibold tracking-[-0.02em] hover:text-[#FFE033] hover:scale-110 transition-all duration-200 origin-left"
       >
         Rachel McCarthy
       </Link>
-      <ul className="flex flex-col items-end gap-2 text-sm font-medium text-white tracking-[-0.01em]">
+      <ul className="flex flex-row flex-wrap justify-end gap-x-3 gap-y-1 md:flex-col md:items-end md:gap-2 text-[11px] md:text-sm font-medium text-white tracking-[-0.01em]">
         {links.map(({ href, label }) => (
           <li key={href}>
             <Link href={href} className="inline-block hover:text-[#FFE033] hover:scale-110 transition-all duration-200 origin-right">

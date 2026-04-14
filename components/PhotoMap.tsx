@@ -153,6 +153,32 @@ export default function PhotoMap() {
 
   return (
     <>
+      {/* Mobile: scrollable list of locations */}
+      <div className="md:hidden space-y-8 pr-5">
+        {LOCATIONS.map((loc) => (
+          <div key={loc.name}>
+            <p className="text-[9px] uppercase tracking-[0.3em] font-medium text-fg mb-3">{loc.name}</p>
+            <div className="flex gap-2 overflow-x-auto pb-1">
+              {loc.photos.map((src) => {
+                const globalIdx = ALL_PHOTOS.findIndex((p) => p.src === src);
+                return (
+                  <button
+                    key={src}
+                    className="flex-none relative overflow-hidden cursor-zoom-in"
+                    style={{ width: 120, height: 120 }}
+                    onClick={() => setExpandedIndex(globalIdx)}
+                  >
+                    <Image src={src} alt={loc.name} fill className="object-cover" />
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Desktop: D3 map */}
+      <div className="hidden md:block">
       <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ overflow: "visible" }}>
         {/* Countries */}
         {countries.map((d, i) => (
@@ -254,15 +280,16 @@ export default function PhotoMap() {
           );
         })}
       </svg>
+      </div>
 
       {expandedIndex !== null && (() => {
         const { src, location } = ALL_PHOTOS[expandedIndex];
         return (
           <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/85 backdrop-blur-sm" onClick={closeExpanded}>
             <p className="text-white/60 text-[11px] uppercase tracking-[0.25em] font-medium mb-4">{location}</p>
-            <div className="relative flex items-center gap-6 px-16" onClick={(e) => e.stopPropagation()}>
-              <button onClick={() => navigate(-1)} className="text-white/50 hover:text-white text-3xl leading-none transition-colors select-none">←</button>
-              <Image src={src} alt={location} width={1200} height={900} className="max-h-[80vh] max-w-[80vw] w-auto h-auto object-contain" />
+            <div className="relative flex items-center gap-3 md:gap-6 px-8 md:px-16" onClick={(e) => e.stopPropagation()}>
+              <button onClick={() => navigate(-1)} className="text-white/50 hover:text-white text-2xl md:text-3xl leading-none transition-colors select-none flex-none">←</button>
+              <Image src={src} alt={location} width={1200} height={900} className="max-h-[75vh] max-w-[85vw] md:max-h-[80vh] md:max-w-[80vw] w-auto h-auto object-contain" />
               <button onClick={() => navigate(1)} className="text-white/50 hover:text-white text-3xl leading-none transition-colors select-none">→</button>
             </div>
             <p className="text-white/30 text-[10px] tracking-widest mt-4">{expandedIndex + 1} / {ALL_PHOTOS.length}</p>

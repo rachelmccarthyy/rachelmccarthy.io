@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
+import BackLink from "@/components/BackLink";
 import PageShell from "@/components/PageShell";
 import { getThought, thoughts } from "@/lib/thoughts";
 
@@ -22,12 +22,7 @@ export default async function ThoughtPage({ params }: { params: Promise<{ slug: 
   return (
     <PageShell title="Thinking" subtitle="I'm thinking thoughts.">
       <div className="mb-8">
-        <Link
-          href="/thinking"
-          className="text-[10px] uppercase tracking-[0.2em] font-medium text-fg/60 hover:text-[#FFE033]"
-        >
-          ← Back to Thinking
-        </Link>
+        <BackLink fallback="/thinking" label="← Back to Thinking" />
       </div>
       <div className="py-8 first:pt-0">
         <div className="flex items-baseline gap-3 text-[10px] uppercase tracking-[0.08em] text-fg/50 font-normal mb-2">

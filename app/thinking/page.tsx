@@ -2,12 +2,6 @@ import PageShell from "@/components/PageShell";
 
 const thoughts = [
   {
-    title: "Function of Design vs. Design of Function",
-    date: "Mar 2025",
-    tag: "Design · Product",
-    body: "I keep coming back to a distinction I can't quite name cleanly, but I feel it every time I make a product or design decision. There's the function of design — when the way something looks or is arranged actively does something. A made bed isn't decoration; it's the first act of ordering your day. A rug anchors a room and changes how you move through it. The design is the function. Then there's the design of function — when a functional requirement shapes what something looks like. You need closed storage so surfaces stay clear, and the room ends up looking minimal as a byproduct. The function is driving the design. Most people collapse these into \"form follows function\" and move on. But I think they're genuinely different modes of thinking, and the best products live in both simultaneously. A well-designed app isn't just usable and also pretty — the visual choices are doing work (hierarchy, focus, calm), and the functional constraints are producing the aesthetic (simplicity born from scope discipline, not decoration). I don't have a clean thesis here yet. But I notice it constantly — in rooms, in products, in the way people dress. Sometimes the design is serving the function. Sometimes the function is producing the design. And the magic is when you can't tell which one came first.",
-  },
-  {
     title: "Alyssa Liu and Loving the Process",
     date: "Feb 2026",
     tag: "Philosophy",
@@ -39,8 +33,14 @@ const thoughts = [
     body: "Everyone references Clayton Christensen's Jobs to Be Done framework. Almost no one applies it well day-to-day. The idea is simple: people don't buy products, they hire them to make progress in their lives. But in practice, most teams skip straight to solutions without ever articulating the job. Here's how I actually use it: start with the moment of struggle, not the user persona. \"I'm standing in the kitchen at 6pm with no plan for dinner\" is a job. \"Millennial food enthusiast\" is a demographic. One leads to a product that solves a real problem; the other leads to a mood board. When you write the job statement clearly — situation, motivation, desired outcome — the feature debates get simpler, because you have something concrete to evaluate against.",
   },
   {
+    title: "Function of Design vs. Design of Function",
+    date: "Mar 2025",
+    tag: "Design · Product",
+    body: "I keep coming back to a distinction I can't quite name cleanly, but I feel it every time I make a product or design decision. There's the function of design — when the way something looks or is arranged actively does something. A made bed isn't decoration; it's the first act of ordering your day. A rug anchors a room and changes how you move through it. The design is the function. Then there's the design of function — when a functional requirement shapes what something looks like. You need closed storage so surfaces stay clear, and the room ends up looking minimal as a byproduct. The function is driving the design. Most people collapse these into \"form follows function\" and move on. But I think they're genuinely different modes of thinking, and the best products live in both simultaneously. A well-designed app isn't just usable and also pretty — the visual choices are doing work (hierarchy, focus, calm), and the functional constraints are producing the aesthetic (simplicity born from scope discipline, not decoration). I don't have a clean thesis here yet. But I notice it constantly — in rooms, in products, in the way people dress. Sometimes the design is serving the function. Sometimes the function is producing the design. And the magic is when you can't tell which one came first.",
+  },
+  {
     title: "Interior Design is Product Design",
-    date: "Oct 2025",
+    date: "Jan 2025",
     tag: "Design · UX",
     body: "Interior design is user experience for physical space. The best rooms work the way the best products do — they shape how you feel and behave without announcing themselves. I've been thinking about this a lot lately through small, concrete decisions: hiding every wire because visible clutter is cognitive load. Closed storage always, because when surfaces are clear your brain stays clear too. Rugs, because a good one anchors a room and can completely change the energy of a space without touching a wall. Making your bed every morning — not because anyone sees it, but because it's the first completed task of the day and it sets the tone. I've been loving the European tuck: draping the coverlet over your pillows and tucking it just under the base so the bed reads as one clean surface. It takes ten seconds and the room immediately feels intentional. None of this is about aesthetics for aesthetics' sake. It's about designing your environment the way you'd design a product — every decision in service of how the person using it actually feels.",
   },

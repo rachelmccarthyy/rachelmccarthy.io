@@ -40,7 +40,7 @@ export default function Hero() {
 
 
         <p className="mt-18 italic font-semibold tracking-[-0.02em] whitespace-nowrap" style={{ color: "#FFE033", fontSize: "clamp(11px, 1.8vw, 22px)", textShadow: "0 1px 3px rgba(0,0,0,0.4)" }}>
-          Product Manager | Brooklyn, NY | {new Date().toLocaleDateString("en-US", { month: "long", year: "numeric" })}
+          Product Manager | Brooklyn, New York | {new Date().toLocaleDateString("en-US", { month: "long", year: "numeric" })}
         </p>
 
       </div>
